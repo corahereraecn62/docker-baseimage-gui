@@ -8,7 +8,9 @@
 ARG BASEIMAGE=ubuntu:latest
 
 # Define the Alpine packages to be installed into the image.
-ARG ALPINE_PKGS="apt update && apt install -y \
+
+# Define the Debian/Ubuntu packages to be installed into the image.
+ARG DEBIAN_PKGS="apt update && apt install -y \
     net-tools \
     openssl \
     netcat-openbsd \
@@ -17,16 +19,6 @@ ARG ALPINE_PKGS="apt update && apt install -y \
     gnome-terminal \
     dbus-x11 \
     && rm -rf /var/lib/apt/lists/*
-"
-
-# Define the Debian/Ubuntu packages to be installed into the image.
-ARG DEBIAN_PKGS="\
-    # Used to determine if nginx is ready.
-    netcat-openbsd \
-    # For ifconfig
-    net-tools \
-    # Needed to generate self-signed certificates
-    openssl \
 "
 
 # Get Dockerfile cross-compilation helpers.
