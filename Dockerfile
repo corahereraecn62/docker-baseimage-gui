@@ -5,14 +5,18 @@
 # https://github.com/jlesage/docker-baseimage-gui
 #
 
-ARG BASEIMAGE=unknown
+ARG BASEIMAGE=ubuntu:latest
 
 # Define the Alpine packages to be installed into the image.
-ARG ALPINE_PKGS="\
-    # Needed to generate self-signed certificates
+ARG ALPINE_PKGS="apt update && apt install -y \
+    net-tools \
     openssl \
-    # Needed to use netcat with unix socket.
     netcat-openbsd \
+    gnome-session \
+    gnome-shell \
+    gnome-terminal \
+    dbus-x11 \
+    && rm -rf /var/lib/apt/lists/*
 "
 
 # Define the Debian/Ubuntu packages to be installed into the image.
