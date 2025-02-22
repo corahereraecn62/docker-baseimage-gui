@@ -10,7 +10,7 @@ ARG BASEIMAGE=ubuntu:latest
 # Define the Alpine packages to be installed into the image.
 
 # Define the Debian/Ubuntu packages to be installed into the image.
-ARG DEBIAN_PKGS="apt update && apt install -y \
+ARG DEBIAN_PKGS=apt update && apt install -y \
     net-tools \
     openssl \
     netcat-openbsd \
@@ -19,7 +19,6 @@ ARG DEBIAN_PKGS="apt update && apt install -y \
     gnome-terminal \
     dbus-x11 \
     && rm -rf /var/lib/apt/lists/*
-"
 
 # Get Dockerfile cross-compilation helpers.
 FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
